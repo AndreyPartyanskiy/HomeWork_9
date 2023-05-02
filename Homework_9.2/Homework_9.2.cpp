@@ -60,9 +60,11 @@ public:
 	Fraction operator--(int)
 	{
 		Fraction temp = *this;
-		temp.numerator_ = numerator_ - denominator_;
-		temp.denominator_ = denominator_;
 		return temp;
+
+		//temp.numerator_ = numerator_;// -denominator_;
+		//temp.denominator_ = denominator_;
+		//return temp;
 	}
 
 	std::string print_() 
@@ -101,7 +103,7 @@ int main()
 	std::cout << "++" << f1.print_() << " * " << f2.print_() << " = " << (++f1 * f2).print_() << '\n';
 	std::cout << "Значение дроби 1 = " << (++f1).print_() << std::endl;
 	std::cout << (++f1).print_() << "--" << " * " << f2.print_() << " = " << ((++f1--) * f2).print_() << '\n';
-	std::cout << "Значение дроби 1 = " << (++f1--).print_() << std::endl;
+	std::cout << "Значение дроби 1 = " << f1.print_() << std::endl;
 
 	return 0;
 }
