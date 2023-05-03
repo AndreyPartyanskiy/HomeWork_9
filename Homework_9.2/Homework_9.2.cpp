@@ -49,22 +49,30 @@ public:
 		return temp;
 	}
 
-	Fraction operator++()
+	Fraction& operator++()
+	{
+		numerator_ = numerator_+ denominator_;
+		return *this;
+	}
+
+	Fraction& operator--()
+	{
+		numerator_ = numerator_ - denominator_;
+		return *this;
+	}
+
+	Fraction operator++(int)
 	{
 		Fraction temp = *this;
-		temp.numerator_ = numerator_ + denominator_;
-		temp.denominator_ = denominator_;
+		numerator_ = numerator_ + denominator_;
 		return temp;
 	}
 
 	Fraction operator--(int)
 	{
 		Fraction temp = *this;
+		numerator_ = numerator_- denominator_;
 		return temp;
-
-		//temp.numerator_ = numerator_;// -denominator_;
-		//temp.denominator_ = denominator_;
-		//return temp;
 	}
 
 	std::string print_() 
@@ -78,7 +86,7 @@ public:
 
 int main()
 {
-	int a, b;
+	int a, b, c, d;
 	system("chcp 1251");
 	system("cls");
 
@@ -88,21 +96,25 @@ int main()
 	std::cin >> b;
 
 	Fraction f1(a, b);
+	std::cout << f1.print_() << std::endl;
 
 	std::cout << "Введите числитель дроби 2: ";
-	std::cin >> a;
+	std::cin >> c;
 	std::cout << "Введите знаменатель дроби 2: ";
-	std::cin >> b;
+	std::cin >> d;
 
-	Fraction f2(a, b);
+	Fraction f2(c, d);
+	std::cout << f2.print_() << std::endl;
 
 	std::cout << f1.print_() << " + " << f2.print_() << " = " << (f1+f2).print_() << '\n';
 	std::cout << f1.print_() << " - " << f2.print_() << " = " << (f1 - f2).print_() << '\n';
 	std::cout << f1.print_() << " * " << f2.print_() << " = " << (f1 * f2).print_() << '\n';
 	std::cout << f1.print_() << " / " << f2.print_() << " = " << (f1 / f2).print_() << '\n';
-	std::cout << "++" << f1.print_() << " * " << f2.print_() << " = " << (++f1 * f2).print_() << '\n';
-	std::cout << "Значение дроби 1 = " << (++f1).print_() << std::endl;
-	std::cout << (++f1).print_() << "--" << " * " << f2.print_() << " = " << ((++f1--) * f2).print_() << '\n';
+	std::cout << "++" << f1.print_() << " * " << f2.print_()<< " = ";
+	std :: cout  << (++f1 * f2).print_() << '\n';
+	std::cout << "Значение дроби 1 = " << f1.print_() << std::endl;
+	std::cout << f1.print_() << "--" << " * " << f2.print_()<< " = " ;
+	std:: cout << (f1-- * f2).print_() << '\n';
 	std::cout << "Значение дроби 1 = " << f1.print_() << std::endl;
 
 	return 0;
